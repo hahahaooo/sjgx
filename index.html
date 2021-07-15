@@ -1,0 +1,275 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name='format-detection' content='telephone=no'>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-plus/lib/index.full.js"></script>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.liMarquee.js"></script>
+
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/base.js"></script>
+    <script src="./js/index.js"></script>
+    <title>小彬共享运营大数据平台</title>
+    <style>
+        /* 隐藏轮播图背景图层 */
+        
+        .el-carousel__mask {
+            background-color: transparent !important;
+        }
+        
+        .el-carousel__item {
+            background: rgba(255, 255, 255, .2) !important;
+        }
+        
+        .el-carousel__item.is-active {
+            background: rgba(0, 0, 0, .5) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a href="javasctipt:void(0)" id="login-out" style="position: fixed;right: 10px;top: 10px;color: cyan;">退出</a>
+        <el-row :gutter="20" class="header">
+            <el-col :span="6">
+                <div class="header_left"></div>
+            </el-col>
+            <el-col :span="12">
+                <div class="header_center">
+                    <div class="header_title" id="num1">
+                        小彬共享运营大数据平台
+                    </div>
+                    <div class="header_main">
+                        <div class="main_dec">累计流水</div>
+                        <div class="main_number" id="total_money">
+
+                        </div>
+                        <div class="unit">元</div>
+                    </div>
+                    <div class="main_total">已投放车辆<span>0</span>台</div>
+                </div>
+            </el-col>
+            <el-col :span="6">
+                <div class="header_right"></div>
+            </el-col>
+        </el-row>
+
+        <el-row :gutter="24" class="content">
+            <el-col :span="6">
+                <div class="content_left">
+                    <div class="section">
+                        <div class="section_title">
+                            注册用户
+                        </div>
+                        <div class="section_content">
+                            <div class="number" id="user_total">
+
+                            </div>
+                            <div class="unit">人</div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section_title">
+                            每日用户增长曲线图（15日）
+                        </div>
+                        <div class="section_content">
+                            <div class="chart_box" id="chart_user">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section_title">
+                            实时订单信息
+                        </div>
+                        <div class="section_content wrap">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section_title">
+                            用户信息数据
+                        </div>
+                        <div class="section_content">
+                            <div class="chart_item">
+                                <div class="chart1" id="user_pie"></div>
+                            </div>
+                            <div class="chart_item">
+                                <div class="chart2" id="user_bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="12">
+                <div class="content_center">
+                    <div class="center_main_show">
+                        <div class="main_show_item" id="today_orders">
+                            <div>
+                                <span class="show_item_text">今日订单(元)</span>
+                                <div class="show_item_pec">
+                                    <img /><span><span class="pec"></span>%</span>
+                                </div>
+                            </div>
+                            <div class="show_item_money"></div>
+                        </div>
+                        <div class="main_show_item" id="today_amont">
+                            <div>
+                                <span class="show_item_text">今日交易额</span>
+                                <div class="show_item_pec">
+                                    <img /><span><span class="pec"></span>%</span>
+                                </div>
+                            </div>
+                            <div class="show_item_money"></div>
+                        </div>
+                        <div class="main_show_item" id="week_orders">
+                            <div>
+                                <span class="show_item_text">本周订单</span>
+                                <div class="show_item_pec">
+                                    <img /><span><span class="pec"></span>%</span>
+                                </div>
+                            </div>
+                            <div class="show_item_money"></div>
+                        </div>
+                        <div class="main_show_item" id="week_amount">
+                            <div>
+                                <span class="show_item_text">本周交易额</span>
+                                <div class="show_item_pec">
+                                    <img /><span><span class="pec"></span>%</span>
+                                </div>
+                            </div>
+                            <div class="show_item_money"></div>
+                        </div>
+                    </div>
+
+                    <div class="map_show">
+                        <div class="map"></div>
+                        <div class="map_section">
+                            <ul>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                                <li><img src="./img/map_exp.jpg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="center_bottom">
+                        <div class="center_bottom_chart">
+                            <div id="center_bottom_chart1"></div>
+                        </div>
+                        <div class="center_bottom_chart">
+                            <div id="center_bottom_chart2"></div>
+                        </div>
+                    </div>
+                </div>
+            </el-col>
+            <el-col :span="6">
+                <div class="content_right">
+                    <div class="content_right_top">
+                        <div class="section">
+                            <div class="section_title">
+                                每日车效数据曲线图（7日）
+                            </div>
+                            <div class="section_content">
+                                <div class="chart_box" id="chart_car"></div>
+                            </div>
+                        </div>
+
+                        <div class="chart_banner">
+                            <!-- <ul>
+                                <li>
+                                    <div class="chart_banner_chart">
+                                        <div id="bar1"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="chart_banner_chart">
+                                        <div id="bar2"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="chart_banner_chart">
+                                        <div id="bar3"></div>
+                                    </div>
+                                </li>
+                            </ul> -->
+
+                            <el-carousel :interval="4000" indicator-position="none" type="card" height="7rem" style="margin-top: 20px;">
+                                <el-carousel-item>
+                                    <div class="chart_banner_chart">
+                                        <div id="bar1"></div>
+                                    </div>
+                                </el-carousel-item>
+                                <el-carousel-item>
+                                    <div class="chart_banner_chart">
+                                        <div id="bar2"></div>
+                                    </div>
+                                </el-carousel-item>
+                                <el-carousel-item>
+                                    <div class="chart_banner_chart">
+                                        <div id="bar3"></div>
+                                    </div>
+                                </el-carousel-item>
+                            </el-carousel>
+                        </div>
+                    </div>
+                    <div class="content_right_bottom">
+                        <div class="section">
+                            <div class="section_title">
+                                车辆数据信息
+                            </div>
+                            <div class="section_content">
+                                <div class="chart_box" id="car_infomation">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#login-out').click(function() {
+                $.getApiPrivate('Web/User/Logout', function(data) {
+                    window.location.href = './login.html';
+                });
+            })
+        })
+        const App = {
+            data() {
+                return {};
+            },
+        };
+        const app = Vue.createApp(App);
+        app.use(ElementPlus);
+        app.mount("#app");
+    </script>
+</body>
+
+</html>

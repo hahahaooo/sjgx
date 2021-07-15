@@ -1,0 +1,418 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: rgb(38, 110, 165);
+}
+
+div {
+    box-sizing: border-box;
+}
+
+#app {
+    min-width: 50rem;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: url(../img/bg.png) no-repeat 0 0 / cover;
+    padding: 0 1.2rem 0;
+    position: relative;
+}
+
+.header {
+    height: 10.625rem;
+    width: 100%;
+    background: url(../img/top.png) no-repeat;
+    background-size: 100% 10.625rem;
+}
+
+.header_center {
+    height: 10.65rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header_title {
+    color: #00E9FF;
+    font-size: 2rem;
+    font-weight: 700;
+    padding-top: 0.5rem;
+    letter-spacing: .1rem;
+}
+
+.header_main {
+    margin-top: .6rem;
+    width: 100%;
+    height: 3.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main_dec {
+    font-size: 1.25rem;
+    color: #00E1FC;
+    width: 2.75rem;
+    height: 3.3rem;
+    letter-spacing: .1rem;
+}
+
+.main_total {
+    color: #00E9FF;
+    font-size: 1.0415rem;
+    margin-top: 0.5rem;
+}
+
+.main_total span {
+    margin: 0 5px;
+    letter-spacing: .1rem;
+}
+
+.main_number span {
+    display: inline-block;
+    width: 2.2rem;
+    height: 3.3rem;
+    font-size: 1.875rem;
+    color: #fff;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, .2);
+    text-align: center;
+    line-height: 3.3rem;
+    border-radius: 0.25rem;
+    margin-left: 0.4rem;
+}
+
+.unit {
+    font-size: 0.8335rem;
+    color: #01DFF4;
+    margin-bottom: -2rem;
+    margin-left: 0.4rem;
+}
+
+.section_title {
+    height: 2.2rem;
+    background: url(../img/title.png) no-repeat;
+    background-size: 100%;
+    color: #00E9FF;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0.75rem;
+}
+
+.header_right {}
+
+.content {
+    height: 47.45rem;
+    color: #fff;
+}
+
+.content_left {
+    background-color: rgba(0, 0, 0, .2);
+    margin-left: -0.5rem;
+    padding: 1.2rem;
+    margin-top: -5.65rem;
+    height: 100%;
+}
+
+.content_left .section:nth-child(1) {
+    height: 7.55rem;
+}
+
+.section_content {
+    margin-top: 1rem;
+}
+
+.wrap {
+    height: 5rem;
+    overflow: hidden;
+}
+
+.content_left .section:nth-child(1) .section_content {
+    display: flex;
+}
+
+.content_left .section:nth-child(1) .section_content .number span {
+    display: inline-block;
+    width: 1.8rem;
+    height: 2.7rem;
+    font-size: 1.529rem;
+    color: #fff;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, .2);
+    text-align: center;
+    line-height: 2.7rem;
+    border-radius: 0.25rem;
+    margin-left: 0.4rem;
+}
+
+.content_left .section:nth-child(1) .section_content .number span:first-child {
+    margin-left: 0;
+}
+
+.content_left .section:nth-child(1) .section_content .unit {
+    margin-top: 1.5rem;
+    font-size: 0.8335rem;
+}
+
+.content_left .section:nth-child(2) {
+    height: 16.35rem;
+}
+
+.chart_box {
+    width: 100%;
+    height: 12.05rem;
+}
+
+.content_left .section:nth-child(3) {
+    height: 11.8rem;
+    overflow: hidden;
+}
+
+.content_left .section:nth-child(3) .section_content {
+    height: 7.3rem;
+}
+
+.content_left .section:nth-child(3) .section_content ul {
+    width: 130%;
+    list-style: none;
+}
+
+.content_left .section:nth-child(3) .section_content ul li {
+    font-size: 0.7rem;
+    width: 100% !important;
+    height: 1.85rem;
+    line-height: 1.85rem;
+    border-bottom: 0.05rem solid rgba(81, 196, 238, .2);
+    margin-left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content_left .section:nth-child(4) {
+    height: 9.2rem;
+}
+
+.content_left .section:nth-child(4) .section_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 7rem;
+    margin-top: 0.5rem;
+}
+
+.content_left .section:nth-child(4) .section_content .chart_item {
+    width: 50%;
+    height: 7rem;
+}
+
+.content_left .section:nth-child(4) .section_content .chart_item div {
+    width: 100%;
+    height: 100%;
+}
+
+.content_left .section:nth-child(4) .section_content .chart_item:last-child {
+    background: url(../img/frame_age.png) no-repeat;
+    background-size: 100%;
+}
+
+.content_center {
+    min-height: 47.45rem;
+    padding-top: 1.35rem;
+}
+
+.content_center .center_main_show {
+    height: 5.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content_center .center_main_show .main_show_item {
+    width: 23%;
+    height: 5.7rem;
+    background: url(../img/frame_small.png) no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0.8rem;
+}
+
+.content_center .center_main_show .main_show_item div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content_center .center_main_show .main_show_item div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content_center .center_main_show .main_show_item div:first-child .show_item_pec {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 0px;
+}
+
+.content_center .center_main_show .main_show_item div img {
+    width: 0.8rem;
+    height: 0.9rem;
+}
+
+.content_center .center_main_show .main_show_item div:last-child {
+    text-align: left;
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+.content_center .center_main_show .main_show_item div:first-child span:first-child {
+    font-size: 0.8rem;
+    color: #00E9FF;
+}
+
+.content_center .center_main_show .main_show_item div:first-child span:last-child {
+    font-size: 0.7rem;
+}
+
+.content_center .map_show {
+    margin-top: 1.2rem;
+    height: 22.3rem;
+    background-color: rgba(0, 0, 0, .2);
+    display: flex;
+}
+
+.content_center .map_show .map {
+    width: 24.75rem;
+    height: 20.15rem;
+    background: url(../img/map.png) no-repeat;
+    background-size: 100%;
+    margin: 1.1rem 4.55rem 0 2.9rem;
+}
+
+.content_center .map_show .map_section {
+    height: 100%;
+    width: 12.525rem;
+    padding-top: 1.1rem;
+}
+
+.content_center .map_show .map_section ul {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.content_center .map_show .map_section ul li {
+    margin-bottom: 20px;
+}
+
+.content_center .map_show .map_section img {
+    width: 230px;
+    height: 140px;
+    border-radius: 2px;
+}
+
+.content_center .center_bottom {
+    height: 10rem;
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content_center .center_bottom .center_bottom_chart {
+    width: 22.4rem;
+    height: 100%;
+    background: url(../img/frame_big.png) no-repeat;
+    background-size: 100%;
+}
+
+.content_center .center_bottom .center_bottom_chart div {
+    width: 100%;
+    height: 100%;
+}
+
+.content_right {
+    min-height: 47.45rem;
+    margin-right: -0.5rem;
+    margin-top: -5.65rem;
+    height: 100%;
+}
+
+.content_right .content_right_top {
+    background-color: rgba(0, 0, 0, .2);
+    height: 27.25rem;
+    padding: 1.2rem;
+}
+
+.content_right .content_right_top .chart_box {
+    height: 13.75rem;
+}
+
+.content_right .content_right_top .chart_banner ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    overflow: hidden;
+}
+
+.content_right .content_right_top .chart_banner .chart_banner_chart {
+    flex-shrink: 0;
+    width: 100%;
+    height: 7rem;
+    margin-right: 0.6rem;
+    background: url(../img/frame_careffect.png) no-repeat;
+    background-size: 100% 99.9%;
+}
+
+.content_right .content_right_top .chart_banner .chart_banner_chart div {
+    width: 100%;
+    height: 100%;
+}
+
+.content_right .content_right_bottom {
+    background-color: rgba(0, 0, 0, .2);
+    margin-top: 1rem;
+    height: 19rem;
+    padding: 1.2rem;
+}
+
+.content_right .content_right_bottom .chart_box {
+    height: 13.75rem;
+}
+
+
+/*Plugin CSS*/
+
+.str_wrap {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.str_move {
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: move;
+    z-index: inherit;
+}

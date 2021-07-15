@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>小彬共享运营大数据平台</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="css/toastr.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/scanboardLogin.css" />
+    <link rel="stylesheet" type="text/css" href="css/animsition.css" />
+</head>
+
+<body>
+    <div class="wp animsition">
+        <div class="boardLogin">
+            <a href="#" class="logo">
+                <!-- <img src="images/loginLogo.png"> -->
+            </a>
+            <form id="form_login">
+                <div class="inpGroup">
+                    <span class="loginIco1"></span>
+                    <input type="text" name="account" autocomplete="off" placeholder="手机号">
+                </div>
+                <div class="prompt">
+                    <p class="error"></p>
+                </div>
+
+                <div class="inpGroup">
+                    <span class="loginIco2"></span>
+                    <div class="input2">
+                        <input type="text" name="code" autocomplete="off" placeholder="验证码">
+                        <button type="button" id="linkbutton_code">获取</button>
+                    </div>
+                </div>
+                <div class="prompt">
+                    <p class="success">输入正确</p>
+                </div>
+
+                <button type="button" class="submit">登录</button>
+            </form>
+        </div>
+    </div>
+    <div id="particles-js"></div>
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/toastr.min.js"></script>
+<script type="text/javascript" src="js/jquery.animsition.js"></script>
+<script src="js/particles.min.js"></script>
+<script src="js/app.js"></script>
+<script src="./js/base.js"></script>
+
+<script type="text/javascript">
+    var version = '1.0.1';
+
+    toastr.options = {
+        closeButton: false,
+        debug: false,
+        progressBar: true,
+        positionClass: "toast-top-center",
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "2000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut"
+    };
+
+    $(".animsition").animsition({
+        inClass: 'fade-in',
+        outClass: 'fade-out',
+        inDuration: 800,
+        outDuration: 1000,
+        linkElement: '.animsition-link',
+
+        loading: false,
+        loadingParentElement: 'body',
+        loadingClass: 'animsition-loading',
+        unSupportCss: ['animation-duration',
+            '-webkit-animation-duration',
+            '-o-animation-duration'
+        ],
+
+        overlay: false,
+        overlayClass: 'animsition-overlay-slide',
+        overlayParentElement: 'body'
+    });
+
+    $(document).ready(function() {
+        $('.submit').click(function() {
+            login();
+        })
+
+        $('.input2 input').keydown(function(e) {
+            if (e.keyCode == 13) {
+                login();
+            }
+        });
+
+        $('#linkbutton_code').click(function() {
+            var user = $.getFormData('form_login');
+            $.postApiPublic('/Web/SmsCode/GetCode', user, function(data) {
+                if (data && data.status == 0 && data.data) {
+                    $('#linkbutton_code').attr("disabled", "true");
+                    codeBtn();
+                } else {
+                    $('#error_msg').text(data.msg || '账号不存在！');
+                }
+            });
+        })
+
+        var accountCookieName = 'xb.user';
+
+        function setLogin() {
+            var account = $.cookie(accountCookieName);
+        }
+
+        var codeTime = 0;
+
+        function codeBtn() {
+            if (codeTime <= 60) {
+                $('#linkbutton_code').text((60 - codeTime) + 's后获取');
+                ++codeTime;
+                setTimeout(codeBtn, 1000);
+            } else {
+                $('#linkbutton_code').removeAttr("disabled");
+                codeTime = 0;
+            }
+        }
+
+        function login() {
+            var user = $.getFormData('form_login');
+
+            if (!$.validator(user.account)) {
+                toastr.error("登录账号格式不正确!");
+                return;
+            }
+
+            if (!user.code) {
+                toastr.error("请输入验证码!");
+                return;
+            }
+
+            $.postApiPublic('/Web/User/SmsCodeLogin', user, function(data) {
+                if (data && data.status == 0 && data.data) {
+                    window.location.href = 'index.html?v=' + version;;
+                } else {
+                    toastr.error(data.msg || '手机号或验证码错误！');
+                }
+            });
+        }
+
+        function isLogin() {
+            $.getApiPrivate('/Web/User/GetUserInfo', function(data) {
+                if (data.status == 0 && data.data) {
+                    window.location.href = 'index.html?v=' + version;
+                } else {
+                    setLogin();
+                }
+            });
+        }
+
+        isLogin();
+    })
+</script>
+
+</html>
